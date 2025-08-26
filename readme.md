@@ -2,6 +2,8 @@
 
 Allows the stacking of slabs vertically
 
+Comboblock Plus was created with code and media from [comboblock](https://github.com/sirrobzeroone/comboblock)
+
 ## Installation
 
 ### ContentDB

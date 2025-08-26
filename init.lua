@@ -510,7 +510,7 @@ for _,v1 in pairs(slab_index) do
 							end
 						end
 					end
-					if outcome.err == "\27(T@comboblock)Hmmmm... that wont work I can't mix glass slabs and none glass slabs\27E" and node_ax_is_build then
+					if not (outcome.err == nil) and not (string.find(outcome.err, "I can't mix glass slabs") == nil) and node_ax_is_build then
 						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
 						minetest.item_place(itemstack, placer, pointed_thing, p2)
 						return

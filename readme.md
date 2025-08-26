@@ -2,7 +2,7 @@
 
 Allows the stacking of slabs vertically
 
-Comboblock Plus is a fork of [comboblock](https://github.com/sirrobzeroone/comboblock) with some bug fixes and comboblock letter disabled
+Comboblock Plus is a fork of [comboblock](https://github.com/sirrobzeroone/comboblock) with some bug fixes and the comboblock letter disabled
 
 ## Installation
 

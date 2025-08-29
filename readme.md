@@ -3,9 +3,13 @@
 Allows the stacking of slabs vertically
 
 Comboblock Plus is a fork of [comboblock](https://github.com/sirrobzeroone/comboblock) with some bug fixes:
+<br>
 https://github.com/sirrobzeroone/comboblock/issues/6
+<br>
 https://github.com/sirrobzeroone/comboblock/issues/8
+<br>
 Being able to place glass-like slabs over non-glass slabs without combining them
+<br>
 And the comboblock letter disabled by default
 
 ## Installation

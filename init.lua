@@ -485,6 +485,12 @@ for _,v1 in pairs(slab_index) do
 					if outcome.err == nil then 																-- Cant mix glass and normal slabs
 						minetest.swap_node(pos,{name=combo_name, param2=node_c.param2})
 						itemstack:take_item(1)
+					elseif node_ax_is_slab and node_ax_is_glass then
+						cgn = "T"
+						local outcome = comboblock_truthtable_rel_axis_horiz[pgn..cgn]
+						local combo_name = cb_get_name(outcome,placer,node_along_axis.name)
+						minetest.swap_node(node_ax_pos,{name=combo_name, param2=node_along_axis.param2})
+						itemstack:take_item(1)
 					else
 						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
 						minetest.item_place(itemstack, placer, pointed_thing, p2)
@@ -519,7 +525,7 @@ for _,v1 in pairs(slab_index) do
 
 					minetest.item_place(itemstack, placer, pointed_thing, p2)
 
-				elseif node_ax_is_slab and not is_prot and string.find(string.match(minetest.get_node(pointed_thing.under).name, ":(.*)"), "stair") == nil then																    -- Clicked surface and node along axis is_slab
+				elseif node_ax_is_slab then																    -- Clicked surface and node along axis is_slab
 					-- use node_along_axis instead of node clicked
 					-- recalc our clicked glass node true/false using node_along_axis as sub
 					if node_ax_is_glass then cgn = "T" end
@@ -531,10 +537,6 @@ for _,v1 in pairs(slab_index) do
 					if outcome.err == nil then 																-- Cant mix glass and normal slabs
 						minetest.swap_node(node_ax_pos,{name=combo_name, param2=node_along_axis.param2})
 						itemstack:take_item(1)
-					else
-						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
-						minetest.item_place(itemstack, placer, pointed_thing, p2)
-						return
 					end
 
 				else													-- Last error catch

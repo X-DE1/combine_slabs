@@ -1,4 +1,4 @@
-# Comboblock Plus
+# Combine Slabs
 
 Allows the stacking of slabs vertically
 
@@ -17,12 +17,12 @@ And the comboblock letter disabled by default
 ### ContentDB
 
 * Content > Browse Online Content
-* Search for "Comboblock Plus"
+* Search for "Combine Slabs"
 * Click Install
 
 ### Manually
 
-- Unzip the archive, rename the folder to `comboblock_plus` and
+- Unzip the archive, rename the folder to `combine_slabs` and
 place it in `.../minetest/mods/`
 
 - GNU/Linux: If you use a system-wide installation place it in `~/.minetest/mods/`.

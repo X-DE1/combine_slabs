@@ -1,6 +1,6 @@
 # Combine Slabs
 
-Allows the stacking of slabs vertically
+Allows you combine slabs.
 
 Combine Slabs is a fork of [comboblock](https://github.com/sirrobzeroone/comboblock) with some bug fixes:
 <br>

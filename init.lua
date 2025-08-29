@@ -478,46 +478,17 @@ for _,v1 in pairs(slab_index) do
 				local node_ax_is_glass = string.find(string.lower(tostring(node_along_axis.name)), "glass") -- is node glass
 				local is_prot = minetest.is_protected(pos,placer:get_player_name())
 				
-				if pot_short_axis == 0 and not is_prot then																	-- Clicked inside existing node with slab
+				if pot_short_axis == 0 and not is_prot and string.find(string.match(minetest.get_node(pointed_thing.under).name, ":(.*)"), "stair") == nil then																	-- Clicked inside existing node with slab
 					local outcome = comboblock_truthtable_rel_axis_horiz[pgn..cgn]
 					local combo_name = cb_get_name(outcome,placer,node_c.name)
-					if not (string.find(string.match(minetest.get_node(pointed_thing.under).name, ":(.*)"), "stair") == nil) then
-						local hor = comboblock_param_side_offset[nor_string][3]
-						local ver = comboblock_param_side_offset[nor_string][2]
-						if node_ax_is_slab then																    -- Clicked surface and node along axis is_slab
-							-- use node_along_axis instead of node clicked
-							-- recalc our clicked glass node true/false using node_along_axis as sub
-							if node_ax_is_glass then cgn = "T" end
 
-							-- same process as our 1st if now but sub in node_along_axis details
-							local outcome = comboblock_truthtable_rel_axis_horiz[pgn..cgn]
-							local combo_name = cb_get_name(outcome,placer,node_along_axis.name)
-
-							if outcome.err == nil then 																-- Cant mix glass and normal slabs
-								minetest.swap_node(node_ax_pos,{name=combo_name, param2=node_along_axis.param2})
-								itemstack:take_item(1)
-							end
-							return
-						elseif node_ax_is_build then
-							if math.abs(point[hor]) < 0.25 and math.abs(point[ver]) < 0.25 then
-								p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["m"]
-								minetest.item_place(itemstack, placer, pointed_thing, p2)
-								return
-							elseif point[ver] >= math.abs(point[hor]) then
-								p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
-								minetest.item_place(itemstack, placer, pointed_thing, p2)
-								return
-							end
-						end
-					end
-					if not (outcome.err == nil) and not (string.find(outcome.err, "I can't mix glass slabs") == nil) and node_ax_is_build then
-						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
-						minetest.item_place(itemstack, placer, pointed_thing, p2)
-						return
-					end
 					if outcome.err == nil then 																-- Cant mix glass and normal slabs
 						minetest.swap_node(pos,{name=combo_name, param2=node_c.param2})
 						itemstack:take_item(1)
+					else
+						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
+						minetest.item_place(itemstack, placer, pointed_thing, p2)
+						return
 					end
 
 				elseif node_ax_is_build then																-- Clicked surface and node along axis is_buildable
@@ -548,7 +519,7 @@ for _,v1 in pairs(slab_index) do
 
 					minetest.item_place(itemstack, placer, pointed_thing, p2)
 
-				elseif node_ax_is_slab and not is_prot then																    -- Clicked surface and node along axis is_slab
+				elseif node_ax_is_slab and not is_prot and string.find(string.match(minetest.get_node(pointed_thing.under).name, ":(.*)"), "stair") == nil then																    -- Clicked surface and node along axis is_slab
 					-- use node_along_axis instead of node clicked
 					-- recalc our clicked glass node true/false using node_along_axis as sub
 					if node_ax_is_glass then cgn = "T" end
@@ -560,6 +531,10 @@ for _,v1 in pairs(slab_index) do
 					if outcome.err == nil then 																-- Cant mix glass and normal slabs
 						minetest.swap_node(node_ax_pos,{name=combo_name, param2=node_along_axis.param2})
 						itemstack:take_item(1)
+					else
+						local p2 = comboblock_p2_axis[tostring(normal.x..normal.y..normal.z)]["t"]
+						minetest.item_place(itemstack, placer, pointed_thing, p2)
+						return
 					end
 
 				else													-- Last error catch

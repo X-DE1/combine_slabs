@@ -1,4 +1,5 @@
-Orginally written/created by Pithydon and modified by Sirrobzeroone.
+Orginally written/created by Pithydon
+Modified by Sirrobzeroone and X-DE.
 This is free and unencumbered software released into the public domain.
 
 license:

@@ -1,10 +1,3 @@
--------------------------------------------------------------------------------------
---                                                                                 --
---                  Orginally written/created by Pithydon/Pithy                    --
---					           Version 5.6.0.1                                     --
---                first 3 numbers version of minetest created for,                 --
---                   last digit mod version for MT version                         --
--------------------------------------------------------------------------------------
 
 ----------------------------
 --        Settings        --
@@ -547,7 +540,7 @@ for _,v1 in pairs(slab_index) do
 end
 
 for clave, valor in pairs(minetest.registered_nodes) do
-	if string.sub(clave, 1, 10) == m_name then
+	if string.find(clave, m_name) then
 		local grupos_str = ""
 		for clave, number in pairs(valor.groups) do
 			if clave == "oddly_breakable_by_hand" or clave == "crumbly" or clave == "cracky" or clave == "choppy" or clave == "snappy" or clave == "explody" or clave == "dig_immediate" or clave == "not_in_creative_inventory" or clave == "flammable" then

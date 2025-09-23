@@ -465,7 +465,7 @@ for _,v1 in pairs(slab_index) do
 				local node_ax_is_glass = string.find(string.lower(tostring(node_along_axis.name)), "glass") -- is node glass
 				local is_prot = minetest.is_protected(pos,placer:get_player_name())
 				
-				if pot_short_axis == 0 and not is_prot and minetest.get_node(pointed_thing.under).name:sub(1,7) == "stairs:" and not (minetest.get_node(pointed_thing.under).name:sub(8,12) == "stair") then																	-- Clicked inside existing node with slab
+				if pot_short_axis == 0 and not is_prot and minetest.get_node(pointed_thing.under).name:sub(1,11) == "stairs:slab" then																	-- Clicked inside existing node with slab
 					local outcome = comboblock_truthtable_rel_axis_horiz[pgn..cgn]
 					local combo_name = cb_get_name(outcome,placer,node_c.name)
 
